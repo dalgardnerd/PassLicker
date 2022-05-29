@@ -46,8 +46,8 @@ def get_passphrase(num_chars, total_words, word_separator, include_digits):
     for word in word_list:
         passphrase += word.capitalize()
         used_words += 1
-        if used_words < total_words:
-            passphrase += word_separator
+        if used_words < total_words: # this is so that we only apply word separators between words, not at the end of the passphrase
+            passphrase += word_separator 
     if include_digits:
         passphrase += (str(math.floor((random.random()*100))))
         print(passphrase)
@@ -72,5 +72,5 @@ def push_passphrase(passphrase, expire_days, expire_views):
             link = f'https://pwpush.com/en/p/{token}'
             return link
             break
-        requests.delete(f"{base_url}/p/{token}.json")
+        requests.delete(f"{base_url}/p/{token}.json") #deletes any link that has a backslash
     
