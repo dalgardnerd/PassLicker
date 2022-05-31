@@ -4,6 +4,7 @@ import math
 import random
 import json
 import requests
+from dictionary import wordlist
 
 
 def load_dictionary():  # loads words_alpha.txt from current dir and returns object of all words
@@ -18,7 +19,7 @@ def load_dictionary():  # loads words_alpha.txt from current dir and returns obj
 def find_words(num_chars, total_words):
     """Finds and returns word list from dictionary"""
 
-    words = load_dictionary()
+    words = wordlist
     upper_limit = len(words)
     result = []
     valid_words = 0
