@@ -36,6 +36,9 @@ def push_only_click():
     text_box.insert(1.0, '\n\n')
     text_box.configure(state='disabled')
 
+def save_settings_click():
+    pass
+
 
 # define text box
 text_box = Text(root, height=20, width=80, padx=15, pady=15)
