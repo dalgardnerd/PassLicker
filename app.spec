@@ -37,6 +37,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='passlicker.icns',
 )
 coll = COLLECT(
     exe,
@@ -51,6 +52,6 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='app.app',
-    icon=passlicker.icns,
+    icon='passlicker.icns',
     bundle_identifier=None,
 )

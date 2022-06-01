@@ -7,7 +7,7 @@ import requests
 from dictionary import wordlist
 
 
-def load_dictionary():  # loads words_alpha.txt from current dir and returns object of all words
+def load_dictionary():  # Currently unused
     """Counts size of dictionary to set range for random word selection"""
     # set path
     dictionary_path = ("words_alpha.txt")

@@ -1,3 +1,6 @@
+"""Used to convert a text file into a .py file so it can be imported instead of opened"""
+
+
 dictionary_path = ("words_alpha.txt")
 new_file = ("dictionary.py")
 count = 0

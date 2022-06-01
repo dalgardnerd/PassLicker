@@ -14,8 +14,8 @@ Types if import:
 IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
             tracking down the missing module yourself. Thanks!
 
-missing module named _winapi - imported by encodings (delayed, conditional, optional), test.support (delayed, conditional), multiprocessing.connection (optional), multiprocessing.spawn (delayed, conditional), multiprocessing.reduction (conditional), multiprocessing.shared_memory (conditional), multiprocessing.heap (conditional), multiprocessing.popen_spawn_win32 (top-level), asyncio.windows_events (top-level), asyncio.windows_utils (top-level), subprocess (optional)
-missing module named msvcrt - imported by getpass (optional), test.support (delayed, conditional, optional), multiprocessing.spawn (delayed, conditional), multiprocessing.popen_spawn_win32 (top-level), asyncio.windows_events (top-level), asyncio.windows_utils (top-level), subprocess (optional)
+missing module named _winapi - imported by encodings (delayed, conditional, optional), subprocess (optional), test.support (delayed, conditional), multiprocessing.connection (optional), multiprocessing.spawn (delayed, conditional), multiprocessing.reduction (conditional), multiprocessing.shared_memory (conditional), multiprocessing.heap (conditional), multiprocessing.popen_spawn_win32 (top-level), asyncio.windows_events (top-level), asyncio.windows_utils (top-level)
+missing module named msvcrt - imported by subprocess (optional), getpass (optional), test.support (delayed, conditional, optional), multiprocessing.spawn (delayed, conditional), multiprocessing.popen_spawn_win32 (top-level), asyncio.windows_events (top-level), asyncio.windows_utils (top-level)
 missing module named org - imported by pickle (optional)
 missing module named urllib.getproxies_environment - imported by urllib (conditional), requests.compat (conditional)
 missing module named urllib.proxy_bypass_environment - imported by urllib (conditional), requests.compat (conditional)
