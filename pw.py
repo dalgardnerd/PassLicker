@@ -4,7 +4,7 @@ import math
 import random
 import json
 import requests
-from dictionary import wordlist
+from wordlist import wordlist
 
 
 def load_dictionary():  # Currently unused

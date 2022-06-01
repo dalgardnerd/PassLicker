@@ -12,7 +12,7 @@ root.iconbitmap("passlicker.icns")
 # global link
 
 
-def pushit_click():
+def gen_and_push_click():
     print(include_digits_value.get())
     passphrase = pw.get_passphrase(
         (int(num_chars_box.get())), int(total_words_box.get()), (word_separator_box.get()), include_digits_value.get())
@@ -25,8 +25,16 @@ def pushit_click():
     text_box.insert(1.0, '\n\n')
     text_box.configure(state='disabled')
 
-# def copy_pass_click():
-#     print(passphrase)
+def push_only_click():
+    passphrase = specify_passphrase_box.get()
+    link = pw.push_passphrase(passphrase, int(
+        expire_days_box.get()), int(expire_views_box.get()))
+    text_box.configure(state='normal')
+    text_box.insert(1.0, link)
+    text_box.insert(1.0, '\n')
+    text_box.insert(1.0, passphrase)
+    text_box.insert(1.0, '\n\n')
+    text_box.configure(state='disabled')
 
 
 # define text box
@@ -113,6 +121,14 @@ link_settings_label = Label(root, text="Link Settings:",
                             anchor='e',
                             padx=5,
                             pady=5)
+specify_passphrase_label = Label(root, text="Specify Passphrase:",
+                            bg='#1567ab',
+                            fg='white',
+                            border=2,
+                            anchor='e',
+                            padx=5,
+                            pady=5)
+
 
 num_chars_box = Spinbox(
     root,
@@ -151,8 +167,10 @@ expire_views_box = Spinbox(
 
 
 word_separator_box = Entry(root, width=3,
-                           fg='black', borderwidth=1)
+                           fg='black', borderwidth=0)
 word_separator_box.insert(0, '-')
+specify_passphrase_box = Entry(root, width=15,
+                           fg='black', borderwidth=0)
 
 include_digits_value = IntVar()
 include_digits_box = Checkbutton(
@@ -161,8 +179,10 @@ include_digits_box.select()
 include_digits_box.include_digits_value = include_digits_value
 
 
-pushit_button = Button(root, text="Push it", padx=20, pady=20, bg='white', fg="#17568a", font="Helvetica",
-                       command=pushit_click)
+gen_and_push = Button(root, text="Generate and Push\nRandom Passphrase", padx=5, pady=5, bg='white', fg="#17568a", font="Helvetica",
+                       command=gen_and_push_click)
+push_only = Button(root, text="Push Specified\nPassphrase", padx=5, pady=5, bg='white', fg="#17568a", font="Helvetica",
+command=push_only_click)
 # copy_pass_button = Button(root, text="Copy Passphrase", padx=0, pady=0,bg='white',fg="#17568a", font="Helvetica",
 #                        command=copy_pass_click)
 # copy_link_button = Button(root, text="Copy Link", padx=20, pady=0,bg='#17568a',fg="#17568a", font="Helvetica",
@@ -170,9 +190,17 @@ pushit_button = Button(root, text="Push it", padx=20, pady=20, bg='white', fg="#
 
 # GRID
 
+specify_passphrase_label.grid(column=4, row=1,  columnspan=1,
+                    rowspan=1)
+specify_passphrase_box.grid(column=4, row=2,  columnspan=1,
+                   rowspan=1)
+push_only.grid(column=4, row=3,  columnspan=1,
+                   rowspan=2, padx=5, pady=5)
+gen_and_push.grid(column=4, row=5,  columnspan=1,
+                   rowspan=2, padx=5, pady=5)
 
-pushit_button.grid(column=2, row=0,  columnspan=1,
-                   rowspan=5, padx=20, pady=20)
+
+
 # copy_pass_button.grid(column=0, row=5,  columnspan=2,
 #                    rowspan=1, padx=10, pady=10)
 # copy_link_button.grid(column=3, row=5,  columnspan=3,
@@ -183,8 +211,8 @@ num_chars_box.grid(column=1, row=2)
 total_words_box.grid(column=1, row=3)
 word_separator_box.grid(column=1, row=4)
 include_digits_box.grid(column=1, row=5)
-expire_days_box.grid(column=4, row=3)
-expire_views_box.grid(column=4, row=4)
+expire_days_box.grid(column=3, row=2)
+expire_views_box.grid(column=3, row=3)
 
 
 num_chars_label.grid(column=0, row=2)
@@ -192,11 +220,11 @@ total_words_label.grid(column=0, row=3)
 word_separator_label.grid(column=0, row=4)
 include_digits_label.grid(column=0, row=5)
 
-link_settings_label.grid(column=3, row=1, columnspan=2)
-expire_days_label.grid(column=3, row=3)
-expire_views_label.grid(column=3, row=4)
+link_settings_label.grid(column=2, row=1, columnspan=2)
+expire_days_label.grid(column=2, row=2)
+expire_views_label.grid(column=2, row=3)
 
 
-text_box.grid(column=0, row=7, columnspan=5)
+text_box.grid(column=0, row=10, columnspan=5)
 
 root.mainloop()
