@@ -47,10 +47,12 @@ def get_passphrase(num_chars, total_words, word_separator, include_digits):
     for word in word_list:
         passphrase += word.capitalize()
         used_words += 1
-        if used_words < total_words: # this is so that we only apply word separators between words, not at the end of the passphrase
-            passphrase += word_separator 
+        if used_words < total_words:  # this is so that we only apply word separators between words, not at the end of the passphrase
+            passphrase += word_separator
     if include_digits:
         passphrase += (str(math.floor((random.random()*100))))
+        if passphrase == 0:
+            return '00'
         print(passphrase)
     return passphrase
 
@@ -60,18 +62,18 @@ def push_passphrase(passphrase, expire_days, expire_views):
 
     base_url = 'https://pwpush.com'
     endpoint = '/p.json'
-    
+
     data = {
         'password[payload]': passphrase,
         'password[expire_after_days]': expire_days,
         'password[expire_after_views]': expire_views
     }
-    while True: # ensures we don't get a link with a backslash, barracuda email filtering doesn't like links with backslashes in my use case
+    while True:  # ensures we don't get a link with a backslash, barracuda email filtering doesn't like links with backslashes in my use case
         response = requests.post((base_url+endpoint), data)
         token = json.loads(response.content)['url_token']
         if'\\' not in token:
             link = f'https://pwpush.com/en/p/{token}'
             return link
             break
-        requests.delete(f"{base_url}/p/{token}.json") #deletes any link that has a backslash
-    
+        # deletes any link that has a backslash
+        requests.delete(f"{base_url}/p/{token}.json")

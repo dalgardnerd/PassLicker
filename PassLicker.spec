@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['PassLicker.py'],
+    ['C:/Users/dalgardnerd/Documents/GitHub/PassLicker/PassLicker.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('C:/Users/dalgardnerd/Documents/GitHub/PassLicker/passlicker.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -41,11 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='passlicker.icns',
-)
-app = BUNDLE(
-    exe,
-    name='PassLicker.app',
-    icon='passlicker.icns',
-    bundle_identifier=None,
+    icon='C:\\Users\\dalgardnerd\\Documents\\GitHub\\PassLicker\\passlicker.ico',
 )
