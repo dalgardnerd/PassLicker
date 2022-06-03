@@ -38,7 +38,10 @@ def push_only_click():
 
 def save_settings_click():
     pass
-
+    text_box.configure(state='normal')
+    text_box.insert(1.0, "Saving to defaults.json")
+    text_box.insert(1.0, '\n\n')
+    text_box.configure(state='disabled')
 
 # define text box
 text_box = Text(root, height=20, width=80, padx=15, pady=15)
@@ -186,10 +189,10 @@ gen_and_push = Button(root, text="Generate and Push\nRandom Passphrase", padx=5,
                        command=gen_and_push_click)
 push_only = Button(root, text="Push Specified\nPassphrase", padx=5, pady=5, bg='white', fg="#17568a", font="Helvetica",
 command=push_only_click)
-# copy_pass_button = Button(root, text="Copy Passphrase", padx=0, pady=0,bg='white',fg="#17568a", font="Helvetica",
-#                        command=copy_pass_click)
-# copy_link_button = Button(root, text="Copy Link", padx=20, pady=0,bg='#17568a',fg="#17568a", font="Helvetica",
-#                        command=pushit_click)
+save_settings = Button(root, text="Save Current Settings", padx=5, pady=5, bg='white', fg="#17568a", font="Helvetica",
+                       command=save_settings_click)
+save_settings.grid(column=2, row=5,  columnspan=2,
+                   rowspan=2, padx=5, pady=5)           
 
 # GRID
 

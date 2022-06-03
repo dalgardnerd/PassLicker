@@ -41,11 +41,10 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='passlicker.icns',
 )
 app = BUNDLE(
     exe,
     name='PassLicker.app',
-    icon='passlicker.icns',
+    icon=None,
     bundle_identifier=None,
 )
