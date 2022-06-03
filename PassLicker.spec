@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['C:/Users/dalgardnerd/Documents/GitHub/PassLicker/PassLicker.py'],
+    ['PassLicker.py'],
     pathex=[],
     binaries=[],
-    datas=[('C:/Users/dalgardnerd/Documents/GitHub/PassLicker/passlicker.ico', '.')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -41,5 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='C:\\Users\\dalgardnerd\\Documents\\GitHub\\PassLicker\\passlicker.ico',
+    icon='passlicker.ico',
 )

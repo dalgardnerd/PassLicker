@@ -1,4 +1,5 @@
 """Generates and pushes a passphrase to pwpush.com, returns a link that expires"""
+from cgitb import text
 from tkinter import *
 import pw
 import json
@@ -17,9 +18,9 @@ LABEL_PADY = 10
 
 
 def gen_and_push_click():
-    print(include_digits_value.get())
+    print(include_digits_var.get())
     passphrase = pw.get_passphrase(
-        (int(num_chars_box.get())), int(total_words_box.get()), (word_separator_box.get()), include_digits_value.get())
+        (int(num_chars_box.get())), int(total_words_box.get()), (word_separator_box.get()), include_digits_var.get())
     link = pw.push_passphrase(passphrase, int(
         expire_days_box.get()), int(expire_views_box.get()))
     text_box.configure(state='normal')
@@ -46,13 +47,15 @@ def save_settings_click():
     num_chars = num_chars_box.get()
     total_words = total_words_box.get()
     word_separator = word_separator_box.get()
-    include_digits = "True" if (include_digits_value.get() == 1) else "False"
+    include_digits = "True" if (include_digits_var.get() == 1) else "False"
     expire_days = expire_days_box.get()
     expire_views = expire_views_box.get()
     write_defaults(num_chars, total_words, word_separator,
                    include_digits, expire_days, expire_views)
-    text_box.insert(1.0, "Settings Saved to defaults.json")
-    text_box.insert(1.0, '\n')
+    text_box.configure(state='normal')
+    text_box.insert(1.0, "Settings saved to defaults.json")
+    text_box.insert(1.0, '\n\n')
+    text_box.configure(state='disabled')
 
 
 settings = handle_defaults()
@@ -143,63 +146,64 @@ specify_passphrase_label = Label(root, text="Specify Passphrase:",
                                  padx=5,
                                  pady=5)
 
-
+num_chars_var = IntVar()
+num_chars_var.set(settings['num_chars'])
 num_chars_box = Spinbox(
     root,
     from_=3,
     to=17,
+    textvariable=num_chars_var,
     width=2,
     border=2,
     wrap=True)
-
-num_chars_box.insert(0, settings['num_chars'])
+total_words_var = IntVar()
+total_words_var.set(settings['total_words'])
 total_words_box = Spinbox(
     root,
     from_=2,
     to=7,
+    textvariable=total_words_var,
     width=2,
     border=2,
     wrap=True)
-
-total_words_box.insert(0, settings['total_words'])
-
+expire_days_var = IntVar()
+expire_days_var.set(settings['expire_days'])
 expire_days_box = Spinbox(
     root,
     from_=settings['expire_days'],
     to=60,
+    textvariable=expire_days_var,
     width=2,
     border=2,
     wrap=True)
 
-
+expire_views_var = IntVar()
+expire_views_var.set(settings['expire_views'])
 expire_views_box = Spinbox(
     root,
-    from_=settings['expire_views'],
+    from_=1,
     to=50,
+    textvariable=expire_views_var,
     width=2,
     border=2,
     wrap=True)
 
+word_separator_var = StringVar()
+word_separator_var.set(settings['word_separator'])
+word_separator_box = Entry(
+    root, width=3, textvariable=word_separator_var, fg='black', borderwidth=0)
 
-word_separator_box = Entry(root, width=3,
-                           fg='black', borderwidth=0)
 
-specify_passphrase_box = Entry(root, width=15,
+specify_passphrase_box = Entry(root, width=25,
                                fg='black', borderwidth=0)
 
-include_digits_value = IntVar()
+include_digits_var = IntVar()
 if settings['include_digits'] == "True":
-    include_digits_value.set(1)
+    include_digits_var.set(1)
 else:
-    include_digits_value.set(0)
+    include_digits_var.set(0)
 include_digits_box = Checkbutton(
-    root, variable=include_digits_value, bg='#08243b')
-
-# Apply Settings
-
-
-word_separator_box.insert(0, settings['word_separator'])
-# include_digits_box.include_digits_value = include_digits_value
+    root, variable=include_digits_var, bg='#08243b')
 
 
 gen_and_push = Button(root, text="Generate and Push\nRandom Passphrase", padx=5, pady=5, bg='white', fg="#17568a", font="Helvetica",
