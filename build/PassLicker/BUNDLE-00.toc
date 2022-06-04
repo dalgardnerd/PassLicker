@@ -1,3 +1,0 @@
-([('PassLicker',
-   '/Users/dallasgardner/Documents/GitHub/PassLicker/dist/PassLicker',
-   'EXECUTABLE')],)

@@ -4,12 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pyqt5 = "*"
 requests = "*"
 pyinstaller = "*"
-py2exe = "*"
+auto-py-to-exe = "*"
+pyinstaller-hooks-contrib = "*"
 
 [dev-packages]
 autopep8 = "*"
 
 [requires]
-python_version = "3.10.*"
+python_version = "3.9"

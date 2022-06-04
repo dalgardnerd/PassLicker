@@ -9,7 +9,7 @@ def handle_defaults():
         print("defaults.json found")
         return load_defaults()
     print("No defaults found, creating defaults.json")
-    write_defaults("5", "2", "-", "True", "14", "10")
+    write_defaults("5", "2", "-", "2", "14", "10")
     return load_defaults()
 
 
