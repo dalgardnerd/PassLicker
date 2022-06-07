@@ -9,6 +9,7 @@ requests = "*"
 pyinstaller = "*"
 auto-py-to-exe = "*"
 pyinstaller-hooks-contrib = "*"
+pyqt6 = "*"
 
 [dev-packages]
 autopep8 = "*"

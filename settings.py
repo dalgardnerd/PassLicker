@@ -9,7 +9,7 @@ def handle_defaults():
         print("defaults.json found")
         return load_defaults()
     print("No defaults found, creating defaults.json")
-    write_defaults("5", "2", "-", "2", "14", "10")
+    write_defaults("5", "2", "-", "True", "14", "10")
     return load_defaults()
 
 
@@ -25,7 +25,7 @@ def write_defaults(num_chars, total_words, word_separator, include_digits, expir
         "num_chars": num_chars,
         "total_words": total_words,
         "word_separator": word_separator,
-        "include_digits": include_digits,
+        "include_digits": "True" if include_digits == True else "False",
         "expire_days": expire_days,
         "expire_views": expire_views
     }
@@ -36,4 +36,4 @@ def write_defaults(num_chars, total_words, word_separator, include_digits, expir
 
 
 if __name__ == "__main__":
-    load_defaults()
+    handle_defaults()

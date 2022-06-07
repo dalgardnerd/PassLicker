@@ -48,10 +48,10 @@ def get_passphrase(num_chars, total_words, word_separator, include_digits):
         if used_words < total_words:  # this is so that we only apply word separators between words, not at the end of the passphrase
             passphrase += word_separator
     if include_digits:
-        passphrase += (str(math.floor((random.random()*100))))
-        if passphrase == 0:
-            return '00'
-        print(passphrase)
+        digits = (str(math.floor((random.random()*10))))
+        # generate two random digits and concat to digits
+        digits += (str(math.floor((random.random()*10))))
+        passphrase += digits
     return passphrase
 
 
