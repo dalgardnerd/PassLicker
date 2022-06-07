@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['passlicker.py'],
+    ['PassLicker.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='passlicker',
+    name='PassLicker',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -41,5 +41,10 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='passlicker.ico',
+)
+app = BUNDLE(
+    exe,
+    name='PassLicker.app',
+    icon=None,
+    bundle_identifier=None,
 )
